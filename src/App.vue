@@ -1,85 +1,233 @@
 <template>
-  <div>
-    <body>
-          <div v-if="fromBtc == true">
-              <img id="btcSwap" src="./assets/btc.png" width="50" height="50">
-              <img id="usdtSwap1" src="./assets/usdt.png" width="50" height="50">
-              <div id="niceArrowSwapBtc" class="round">
-                <div id="cta">
-                  <span class="arrow primera next "></span>
-                  <span class="arrow segunda next "></span>
-                </div>
+  <div id="app">
+          <div v-if="fromBtc == true" id="subPage">
+              <div>
+                <div id="btcBox"></div>
+                <div id="btcTopBox"></div>
+                <div id="btcBottomBox"></div>
+                <p id="btcSymbol">BTC</p>
+                <p id="usdtFont1">USDT</p>
+                <h1 id="exchange">Exchange</h1>
+                <p id="shitTalk">Trade tokens in an instant</p>
+                <img id="btcSwap" src="./assets/btc.png" width="35" height="35">
+                <img id="settings" src="./assets/settings.png" width="35" height="35">
+                <img id="clock" src="./assets/clock.png" width="29" height="29">
+                <img id="swapArrow" src="./assets/arrow.png" width="60" height="50">
+                <img id="usdtSwap1" src="./assets/usdt.png" width="35" height="35">
+                <button @click="moveBack(fromBtc)" >Go Back</button>
+                <hr id="exchangeLine">
+                <input id="btcSwapFrom" size="10" v-on:input="convert(btcname)" type="text" placeholder="0.0">
+                <input id="btcSwapTo" size="10" type="text" placeholder="0.0" readonly>
+                <button id="swapButton">Swap</button>
               </div>
-
-              <input type="text">
-              <input type="text" readonly>
-              <button>Swap</button>
-              <button @click="moveBack(fromBtc)" >Go Back</button>
           </div>
-          <div v-else-if="fromEth == true">
-              <img id="ethSwap" src="./assets/eth.png" width="50" height="50">
-              <img id="usdtSwap2" src="./assets/usdt.png" width="50" height="50">
-              <div id="niceArrowSwapEth" class="round">
-                <div id="cta">
-                  <span class="arrow primera next "></span>
-                  <span class="arrow segunda next "></span>
-                </div>
+
+
+          <div v-else-if="fromEth == true" >
+              <div>
+                <div id="btcBox"></div>
+                <div id="btcTopBox"></div>
+                <div id="btcBottomBox"></div>
+                <p id="btcSymbol">ETH</p>
+                <p id="usdtFont1">USDT</p>
+                <h1 id="exchange">Exchange</h1>
+                <p id="shitTalk">Trade tokens in an instant</p>
+                <img id="btcSwap" src="./assets/eth.png" width="35" height="35">
+                <img id="settings" src="./assets/settings.png" width="35" height="35">
+                <img id="clock" src="./assets/clock.png" width="29" height="29">
+                <img id="swapArrow" src="./assets/arrow.png" width="60" height="50">
+                <img id="usdtSwap1" src="./assets/usdt.png" width="35" height="35">
+                <button @click="moveBack(fromEth)" >Go Back</button>
+                <hr id="exchangeLine">
+                <input id="btcSwapFrom" size="10" v-on:input="convert(ethname)" type="text" placeholder="0.0">
+                <input id="btcSwapTo" size="10" type="text" placeholder="0.0" readonly>
+                <button id="swapButton">Swap</button>
               </div>
-
-              <input type="text">
-              <input type="text" readonly>
-              <button>Swap</button>
-              <button @click="moveBack(fromEth)" >Go Back</button>
           </div>
+        
+          <div v-else-if="fromLtc == true">
+            <div>
+                <div id="btcBox"></div>
+                <div id="btcTopBox"></div>
+                <div id="btcBottomBox"></div>
+                <p id="btcSymbol">LTC</p>
+                <p id="usdtFont1">USDT</p>
+                <h1 id="exchange">Exchange</h1>
+                <p id="shitTalk">Trade tokens in an instant</p>
+                <img id="btcSwap" src="./assets/ltc.png" width="35" height="35">
+                <img id="settings" src="./assets/settings.png" width="35" height="35">
+                <img id="clock" src="./assets/clock.png" width="29" height="29">
+                <img id="swapArrow" src="./assets/arrow.png" width="60" height="50">
+                <img id="usdtSwap1" src="./assets/usdt.png" width="35" height="35">
+                <button @click="moveBack(fromLtc)" >Go Back</button>
+                <hr id="exchangeLine">
+                <input id="btcSwapFrom" size="10" v-on:input="convert(ltcname)" type="text" placeholder="0.0">
+                <input id="btcSwapTo" size="10" type="text" placeholder="0.0" readonly>
+                <button id="swapButton">Swap</button>
+              </div>
+          </div>
+
+          <div v-else-if="fromXrp == true">
+             <div>
+                <div id="btcBox"></div>
+                <div id="btcTopBox"></div>
+                <div id="btcBottomBox"></div>
+                <p id="btcSymbol">XRP</p>
+                <p id="usdtFont1">USDT</p>
+                <h1 id="exchange">Exchange</h1>
+                <p id="shitTalk">Trade tokens in an instant</p>
+                <img id="btcSwap" src="./assets/xrp.png" width="35" height="35">
+                <img id="settings" src="./assets/settings.png" width="35" height="35">
+                <img id="clock" src="./assets/clock.png" width="29" height="29">
+                <img id="swapArrow" src="./assets/arrow.png" width="60" height="50">
+                <img id="usdtSwap1" src="./assets/usdt.png" width="35" height="35">
+                <button @click="moveBack(fromXrp)" >Go Back</button>
+                <hr id="exchangeLine">
+                <input id="btcSwapFrom" size="10" v-on:input="convert(xrpname)" type="text" placeholder="0.0">
+                <input id="btcSwapTo" size="10" type="text" placeholder="0.0" readonly>
+                <button id="swapButton">Swap</button>
+              </div>
+          </div>
+
+          <div v-else-if="fromDoge == true">
+            <div>
+                <div id="btcBox"></div>
+                <div id="btcTopBox"></div>
+                <div id="btcBottomBox"></div>
+                <p id="btcSymbol">DOGE</p>
+                <p id="usdtFont1">USDT</p>
+                <h1 id="exchange">Exchange</h1>
+                <p id="shitTalk">Trade tokens in an instant</p>
+                <img id="btcSwap" src="./assets/doge.png" width="35" height="35">
+                <img id="settings" src="./assets/settings.png" width="35" height="35">
+                <img id="clock" src="./assets/clock.png" width="29" height="29">
+                <img id="swapArrow" src="./assets/arrow.png" width="60" height="50">
+                <img id="usdtSwap1" src="./assets/usdt.png" width="35" height="35">
+                <button @click="moveBack(fromDoge)" >Go Back</button>
+                <hr id="exchangeLine">
+                <input id="btcSwapFrom" size="10" v-on:input="convert(dogename)" type="text" placeholder="0.0">
+                <input id="btcSwapTo" size="10" type="text" placeholder="0.0" readonly>
+                <button id="swapButton">Swap</button>
+              </div>
+          </div>
+
+          <div v-else-if="fromAda == true">
+            <div>
+                <div id="btcBox"></div>
+                <div id="btcTopBox"></div>
+                <div id="btcBottomBox"></div>
+                <p id="btcSymbol">ADA</p>
+                <p id="usdtFont1">USDT</p>
+                <h1 id="exchange">Exchange</h1>
+                <p id="shitTalk">Trade tokens in an instant</p>
+                <img id="btcSwap" src="./assets/ada.png" width="35" height="35">
+                <img id="settings" src="./assets/settings.png" width="35" height="35">
+                <img id="clock" src="./assets/clock.png" width="29" height="29">
+                <img id="swapArrow" src="./assets/arrow.png" width="60" height="50">
+                <img id="usdtSwap1" src="./assets/usdt.png" width="35" height="35">
+                <button @click="moveBack(fromAda)" >Go Back</button>
+                <hr id="exchangeLine">
+                <input id="btcSwapFrom" size="10" v-on:input="convert(adaname)" type="text" placeholder="0.0">
+                <input id="btcSwapTo" size="10" type="text" placeholder="0.0" readonly>
+                <button id="swapButton">Swap</button>
+            </div>
+          </div>
+
+          <div v-else-if="fromDot == true">
+            <div>
+                <div id="btcBox"></div>
+                <div id="btcTopBox"></div>
+                <div id="btcBottomBox"></div>
+                <p id="btcSymbol">DOT</p>
+                <p id="usdtFont1">USDT</p>
+                <h1 id="exchange">Exchange</h1>
+                <p id="shitTalk">Trade tokens in an instant</p>
+                <img id="btcSwap" src="./assets/dot.png" width="35" height="35">
+                <img id="settings" src="./assets/settings.png" width="35" height="35">
+                <img id="clock" src="./assets/clock.png" width="29" height="29">
+                <img id="swapArrow" src="./assets/arrow.png" width="60" height="50">
+                <img id="usdtSwap1" src="./assets/usdt.png" width="35" height="35">
+                <button @click="moveBack(fromDot)" >Go Back</button>
+                <hr id="exchangeLine">
+                <input id="btcSwapFrom" size="10" v-on:input="convert(dotname)" type="text" placeholder="0.0">
+                <input id="btcSwapTo" size="10" type="text" placeholder="0.0" readonly>
+                <button id="swapButton">Swap</button>
+            </div>
+          </div>
+
+          <div v-else-if="fromBnb == true">
+            <div>
+                <div id="btcBox"></div>
+                <div id="btcTopBox"></div>
+                <div id="btcBottomBox"></div>
+                <p id="btcSymbol">BNB</p>
+                <p id="usdtFont1">USDT</p>
+                <h1 id="exchange">Exchange</h1>
+                <p id="shitTalk">Trade tokens in an instant</p>
+                <img id="btcSwap" src="./assets/bnb.png" width="35" height="35">
+                <img id="settings" src="./assets/settings.png" width="35" height="35">
+                <img id="clock" src="./assets/clock.png" width="29" height="29">
+                <img id="swapArrow" src="./assets/arrow.png" width="60" height="50">
+                <img id="usdtSwap1" src="./assets/usdt.png" width="35" height="35">
+                <button @click="moveBack(fromBnb)" >Go Back</button>
+                <hr id="exchangeLine">
+                <input id="btcSwapFrom" size="10" v-on:input="convert(bnbname)" type="text" placeholder="0.0">
+                <input id="btcSwapTo" size="10" type="text" placeholder="0.0" readonly>
+                <button id="swapButton">Swap</button>
+            </div>
+          </div>
+
           <div v-else>
-            <div @click="moveToGoodPage(fromBtc, btcname)" id="niceArrow" class="round">
-              <div id="cta">
-                <span class="arrow primera next "></span>
-                <span class="arrow segunda next "></span>
+
+
+              <div @click="moveToGoodPage(fromBtc, btcname)" id="niceArrow" class="round">
+                <div id="cta">
+                  <span class="arrow primera next "></span>
+                  <span class="arrow segunda next "></span>
+                </div>
               </div>
-            </div>
-            <div @click="moveToGoodPage(fromEth, ethname)" id="niceArrow2" class="round">
-              <div id="cta">
-                <span class="arrow primera next "></span>
-                <span class="arrow segunda next "></span>
+              <div @click="moveToGoodPage(fromEth, ethname)" id="niceArrow2" class="round">
+                <div id="cta">
+                  <span class="arrow primera next "></span>
+                  <span class="arrow segunda next "></span>
+                </div>
               </div>
-            </div>
-            <div id="niceArrow3" class="round">
-              <div id="cta">
-                <span class="arrow primera next "></span>
-                <span class="arrow segunda next "></span>
+              <div @click="moveToGoodPage(fromLtc, ltcname)" id="niceArrow3" class="round">
+                <div id="cta">
+                  <span class="arrow primera next "></span>
+                  <span class="arrow segunda next "></span>
+                </div>
               </div>
-            </div>
-            <div id="niceArrow4" class="round">
-              <div id="cta">
-                <span class="arrow primera next "></span>
-                <span class="arrow segunda next "></span>
+              <div @click="moveToGoodPage(fromXrp, xrpname)" id="niceArrow4" class="round">
+                <div id="cta">
+                  <span class="arrow primera next "></span>
+                  <span class="arrow segunda next "></span>
+                </div>
               </div>
-            </div>
-            <div id="niceArrow5" class="round">
-              <div id="cta">
-                <span class="arrow primera next "></span>
-                <span class="arrow segunda next "></span>
+              <div @click="moveToGoodPage(fromDoge, dogename)" id="niceArrow5" class="round">
+                <div id="cta">
+                  <span class="arrow primera next "></span>
+                  <span class="arrow segunda next "></span>
+                </div>
               </div>
-            </div>
-            <div id="niceArrow6" class="round">
-              <div id="cta">
-                <span class="arrow primera next "></span>
-                <span class="arrow segunda next "></span>
+              <div @click="moveToGoodPage(fromAda, adaname)" id="niceArrow6" class="round">
+                <div id="cta">
+                  <span class="arrow primera next "></span>
+                  <span class="arrow segunda next "></span>
+                </div>
               </div>
-            </div>
-            <div id="niceArrow7" class="round">
-              <div id="cta">
-                <span class="arrow primera next "></span>
-                <span class="arrow segunda next "></span>
+              <div @click="moveToGoodPage(fromDot, dotname)" id="niceArrow7" class="round">
+                <div id="cta">
+                  <span class="arrow primera next "></span>
+                  <span class="arrow segunda next "></span>
+                </div>
               </div>
-            </div>
-            <div id="niceArrow8" class="round">
-              <div id="cta">
-                <span class="arrow primera next "></span>
-                <span class="arrow segunda next "></span>
+              <div @click="moveToGoodPage(fromBnb, bnbname)" id="niceArrow8" class="round">
+                <div id="cta">
+                  <span class="arrow primera next "></span>
+                  <span class="arrow segunda next "></span>
+                </div>
               </div>
-            </div>
             
 
               <div id="currencies">
@@ -103,7 +251,7 @@
                 <img id="bnb" src="./assets/bnb.png" width="50" height="50">
               </div>
           </div>
-    </body>
+    
   </div>
 </template>
 
@@ -117,25 +265,86 @@ export default {
       fromLtc: false,
       ltcname: "ltc",
       fromEth: false,
-      ethname: "eth"
+      ethname: "eth",
+      xrpname: "xrp",
+      fromXrp: false,
+      fromDoge: false,
+      dogename: "doge",
+      fromAda: false,
+      adaname: "ada",
+      fromDot: false,
+      dotname: "dot",
+      fromBnb: false,
+      bnbname: "bnb"
     }
   },
   methods: {
     moveToGoodPage(id, nameOfItem){
-      console.log(id);
       if (id == this.fromBtc && nameOfItem == this.btcname){
         this.fromBtc = true
       }
-      else if (id == this.fromEth && nameOfItem == this.ethname){
+      if (id == this.fromEth && nameOfItem == this.ethname){
         this.fromEth = true;
+      }
+      if (id == this.fromLtc && nameOfItem == this.ltcname){
+        this.fromLtc = true;
+      }
+      if (id == this.fromXrp && nameOfItem == this.xrpname){
+        this.fromXrp = true;
+      }
+      if (id == this.fromDoge && nameOfItem == this.dogename){
+        this.fromDoge = true;
+      }
+      if (id == this.fromAda && nameOfItem == this.adaname){
+        this.fromAda = true;
+      }
+      if (id == this.fromDot && nameOfItem == this.dotname){
+        this.fromDot = true;
+      }
+      if (id == this.fromBnb && nameOfItem == this.bnbname){
+        this.fromBnb = true;
       }
     },
     moveBack(id){
       if (id == this.fromBtc){
-        this.fromBtc = false
+        this.fromBtc = false;
       }
-      else if (id == this.fromEth){
-        this.fromEth = false
+      if (id == this.fromEth){
+        this.fromEth = false;
+      }
+      if (id == this.fromLtc){
+        this.fromLtc = false;
+      }
+      if (id == this.fromXrp){
+        this.fromXrp = false;
+      }
+      if (id == this.fromDoge){
+        this.fromDoge = false;
+      }
+      if (id == this.fromAda){
+        this.fromAda = false;
+      }
+      if (id == this.fromDot){
+        this.fromDot = false;
+      }
+      if (id == this.fromBnb){
+        this.fromBnb = false;
+      }
+    },
+    toNumberString(num) { 
+      if (Number.isInteger(num)) { 
+        return num + ".0"
+      } else {
+      return num.toString(); 
+      }
+    },
+    convert(nameOfCurrency){
+      if (nameOfCurrency == this.btcname){
+        let a = document.getElementById("btcSwapFrom").value;
+        var val = parseFloat(a);
+        var ratio = 32000;
+        var sol = this.toNumberString(val * ratio);
+        document.getElementById("btcSwapTo").value = sol;
       }
     }
   }
@@ -143,8 +352,24 @@ export default {
 </script>
 
 <style>
+@import url('https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&subset=devanagari,latin-ext');
 
-body {
+#app{
+  font-family: 'Poppins', sans-serif;
+	font-size: 16px;
+	line-height: 24px;
+	font-weight: 400;
+	color: #14101b;
+}
+input{
+  font-family: 'Poppins', sans-serif;
+	font-size: 16px;
+	line-height: 24px;
+	font-weight: 400;
+	color: #14101b;
+}
+body{
+  background-image: linear-gradient(to right, rgba(192, 125, 247, 0.267),rgba(96, 210, 255, 0.333));
   background-color: black;
 }
 
@@ -414,5 +639,160 @@ body {
   position: absolute;
   left: 900px;
   top: 100px;
+}
+
+
+#btcSwap{
+  position: absolute;
+  left: 1050px;
+  top: 400px;
+}
+#btcSymbol{
+  position: absolute;
+  left: 1095px;
+  top: 391px;
+}
+#niceArrowSwapBtc{
+  position: absolute;
+  left: 900px;
+  top: 100px;
+}
+#usdtSwap1{
+  position: absolute;
+  left: 1050px;
+  top: 565px;
+}
+#usdtFont1{
+  position: absolute;
+  left: 1094px;
+  top: 554px;
+}
+
+
+#btcBox {
+  position: absolute;
+  left: 672px;
+  width: 370px;
+  height: 450px;
+  top: 170px;
+  border-radius: 30px;
+  background-color: white;
+  padding: 50px;
+  margin: 20px;
+}
+#btcTopBox {
+  position: absolute;
+  left: 687px;
+  width: 340px;
+  height: 10px;
+  top: 325px;
+  border-radius: 30px;
+  background-color: rgb(197, 209, 214);
+  padding: 50px;
+  margin: 20px;
+}
+#btcBottomBox {
+  position: absolute;
+  left: 687px;
+  width: 340px;
+  height: 10px;
+  top: 485px;
+  border-radius: 30px;
+  background-color: rgb(197, 209, 214);
+  padding: 50px;
+  margin: 20px;
+}
+
+#swapArrow{
+  -webkit-transform:rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  transform: rotate(90deg);
+  position: absolute;
+  left: 900px;
+  top: 455px;
+ 
+}
+#btcSwapFrom{
+  position: absolute;
+  left: 730px;
+  top: 402px;
+  background-color: rgb(197, 209, 214);
+  border: none;
+}
+::placeholder{
+  color: #7c8085;
+  font-size: 20px;
+}
+input {
+ outline:none;
+ font-size: 24px;
+}
+
+#btcSwapTo{
+  position: absolute;
+  left: 730px;
+  top: 565px;
+  border: none;
+  background-color: rgb(197, 209, 214);
+}
+
+#exchangeLine{
+  position: absolute;
+  top: 300px;
+  left: 691px;
+  background-color: rgb(197, 209, 214);
+  width: 469px;
+}
+
+#swapButton{
+  position: absolute;
+  background-color: rgb(89, 203, 252); /* Green */
+  border: none;
+  color: #ffffff;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 30px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 20px;
+  left: 755px;
+  width: 340px;
+  height: 60px;
+  top: 650px;
+}
+#swapButton:hover{
+  opacity: 0.7;
+}
+
+#exchange{
+  position: absolute;
+  left: 720px;
+  font-size: 20px;
+  font-weight: 600;
+  top: 200px;
+}
+
+#shitTalk{
+  position: absolute;
+  left: 720px;
+  color: #7c8085;
+  font-size: 15px;
+  top: 230px;
+}
+
+#settings{
+  position: absolute;
+  left: 1040px;
+  filter: invert(76%) sepia(38%) saturate(1399%) hue-rotate(168deg) brightness(95%) contrast(108%);
+  top: 225px;
+}
+#clock{
+  position: absolute;
+  left: 1100px;
+  filter: invert(76%) sepia(38%) saturate(1399%) hue-rotate(168deg) brightness(95%) contrast(108%);
+  top: 228px;
 }
 </style>
