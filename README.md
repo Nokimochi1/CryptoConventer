@@ -1,2 +1,2 @@
 # CryptoConventer
-my 1st project in Vue dont hate plz
+Done in one night just wanted to try some thing
